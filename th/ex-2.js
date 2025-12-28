@@ -13,6 +13,36 @@
 */
 
 // Start coding here
+//let findIfProductsAvailable = function(products ,targetProduct ,targetQuantity){
+//    for(let i = 0; i < products.length; i++){
+//        let product = products[i].name   // น่าจะเอาแค่  [i] เพื่อย่อให้ง่ายขึ้น ตัด .name ออก เพราะว่าไม่งั้นมันจะเป็นแบบ products[i].quantity เยอะ ๆ ทำเอง งง เอง 
+//                                             เพราะงั้น ถ้าทำแบบ ตัวอย่าง มันจะผสมโดยตัด [i] ทิ้งแค่นั้น ไม่ก็ประกาศเล่น ๆ สัก 3 แบบ ตามที่ใช้แม่งเลย 
+//    if ((product === targetProduct) && (products[i].quantity > targetQuantity)) { // ถ้าชื่อสินค้าตรงกัน และ จำนวนมากกว่า ค่าที่ลงมาใน targetQuantity
+//        return products[i].quantity + i + " available at " + products[i].zone; // แสดงค่าออกมาเป็น จำนวนสินค้า + ชื่อมัน + คำว่า " available at " + มันอยู่โซนไหน 
+//    } else if (products[i].quantity < targetQuantity){
+//        return "Sorry, we've got only " + i + " available at " + products[i].zone
+//    } else {
+//        return "We don't have Charger" 
+//    }
+//    return 
+//}
+
+let findIfProductsAvailable = function(products, targetProduct, targetQuantity) {
+    for (let i = 0; i < products.length; i++) {
+      let product = products[i];
+      // เจอชื่อสินค้า
+      if (product.name === targetProduct) { // มันมี if ที่ 1  
+        // จำนวนพอ
+        if (product.quantity >= targetQuantity) { // และ มันมี if ที่ 2 
+          return `${targetQuantity} ${targetProduct}(s) are available at Zone ${product.zone}`;
+        }
+        // จำนวนไม่พอ
+        return `Sorry, we've got only ${product.quantity} ${targetProduct}(s) available at Zone ${product.zone}`;
+      }
+    }
+    // วนครบแล้วยังไม่เจอ
+    return `We don't have ${targetProduct}`;
+  };
 
 const products = [
   { name: "Chocolate Milk", quantity: 10, zone: "A1" },
